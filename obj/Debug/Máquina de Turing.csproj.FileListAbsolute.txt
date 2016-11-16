@@ -1,0 +1,9 @@
+C:\Users\Jeff\Documents\Visual Studio 2015\Projects\Faculdade - Linguagens Formais e Autômatos\MT - Máquina de Turing\bin\Debug\Faculdade - Linguagens Formais e Autômatos.exe.config
+C:\Users\Jeff\Documents\Visual Studio 2015\Projects\Faculdade - Linguagens Formais e Autômatos\MT - Máquina de Turing\obj\Debug\Máquina de Turing.csprojResolveAssemblyReference.cache
+C:\Users\Jeff\Documents\Visual Studio 2015\Projects\Faculdade - Linguagens Formais e Autômatos\MT - Máquina de Turing\obj\Debug\Faculdade___Linguagens_Formais_e_Autômatos.Janela.resources
+C:\Users\Jeff\Documents\Visual Studio 2015\Projects\Faculdade - Linguagens Formais e Autômatos\MT - Máquina de Turing\obj\Debug\Faculdade___Linguagens_Formais_e_Autômatos.Properties.Resources.resources
+C:\Users\Jeff\Documents\Visual Studio 2015\Projects\Faculdade - Linguagens Formais e Autômatos\MT - Máquina de Turing\obj\Debug\Máquina de Turing.csproj.GenerateResource.Cache
+C:\Users\Jeff\Documents\Visual Studio 2015\Projects\Faculdade - Linguagens Formais e Autômatos\MT - Máquina de Turing\bin\Debug\Faculdade - Linguagens Formais e Autômatos.exe
+C:\Users\Jeff\Documents\Visual Studio 2015\Projects\Faculdade - Linguagens Formais e Autômatos\MT - Máquina de Turing\bin\Debug\Faculdade - Linguagens Formais e Autômatos.pdb
+C:\Users\Jeff\Documents\Visual Studio 2015\Projects\Faculdade - Linguagens Formais e Autômatos\MT - Máquina de Turing\obj\Debug\Faculdade - Linguagens Formais e Autômatos.exe
+C:\Users\Jeff\Documents\Visual Studio 2015\Projects\Faculdade - Linguagens Formais e Autômatos\MT - Máquina de Turing\obj\Debug\Faculdade - Linguagens Formais e Autômatos.pdb
