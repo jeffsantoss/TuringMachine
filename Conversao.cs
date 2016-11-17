@@ -54,7 +54,8 @@ namespace Faculdade___Linguagens_Formais_e_Autômatos
         }
         public static int CharToNum(char letra)
         {
-            // para trabalhar com 5 bits.
+            // não aceitar a conversão para o mesmo número do delimitador.
+
             int result = 16;
 
             var inicio = ' ';

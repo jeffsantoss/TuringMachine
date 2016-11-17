@@ -102,8 +102,6 @@ namespace Faculdade___Linguagens_Formais_e_Autômatos
             this.output = this.input;
             this.output += turingMachine.Symbolwhite;
 
-            equals = 0;
-
             for (int head = 0; head < output.Length;)
             {
 
@@ -116,19 +114,19 @@ namespace Faculdade___Linguagens_Formais_e_Autômatos
                         if (head < 0)
                         {
                             processing += "\n \t Seu cabeçote foi direcionada para uma célula inexistente";
-                                return false;
+                            return false;
                         }
 
                         processing += "Read (" + t.elementRead + ") in state (q" + t.stateOrigin + ") ";
 
                         stateCurrent = int.Parse(t.stateDestination.ToString());
-                     
+
                         if (t.Direction == 'R')
                         {
                             output = this.ReplaceAt(output, head, t.elementWrite);
                             head++;
                             processing += "write (" + t.elementWrite + ") in state (q" + stateCurrent + "), GO Right > , repeat \n";
-                           // processing += "Posição do cabeçote: " + head + "\n";
+                            // processing += "Posição do cabeçote: " + head + "\n";
                         }
                         else if (t.Direction == 'L')
                         {
@@ -136,7 +134,7 @@ namespace Faculdade___Linguagens_Formais_e_Autômatos
                             output = this.ReplaceAt(output, head, t.elementWrite);
                             head--;
                             processing += "write (" + t.elementWrite + ") in state (q" + stateCurrent + "), GO Left < , repeat \n";
-                          // processing += "Posição do cabeçote: " + head + "\n";
+                            // processing += "Posição do cabeçote: " + head + "\n";
                         }
 
                         else if (t.Direction == 'H')
@@ -144,24 +142,27 @@ namespace Faculdade___Linguagens_Formais_e_Autômatos
 
                             processing += "write (" + t.elementWrite + ") in state (q" + stateCurrent + "), HALT! \n";
                             output = this.ReplaceAt(output, head, t.elementWrite);
-                                  if (!isStateAccept(stateCurrent))
-                                     return false;
-                                        else
-                                             return true;                            
-                        }
-                            equals++;
-                                break;
-                    }
+                            if (!isStateAccept(stateCurrent))
+                                return false;
                             else
-                                continue;                
+                                return true;
+                        }
+                        break;
+                    }
+                    else
+                    {
+                        if (t.Equals(turingMachine.Transitions.Last()))
+                        {
+                            processing += "Não existe nenhuma transição que atenda ao caractere";
+                            return false;
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                    }
                 }
-
-                if (equals < 1)
-                {
-                    processing += "Não existe nenhuma transição que atenda ao caractere (" + input[head] + ") da sua entrada";
-                    return false;
-                }
-
+            
             }
 
             if (!isStateAccept(stateCurrent))

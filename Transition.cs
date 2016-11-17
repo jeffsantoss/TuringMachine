@@ -13,7 +13,6 @@ namespace Faculdade___Linguagens_Formais_e_Autômatos
         public char Direction { get; set; } 
         public char elementRead { get; set; }
         public char elementWrite { get; set; }
-
         public Transition(char eR, char orig, char dest, char eW,char dir)
         {
             this.stateOrigin = orig;
