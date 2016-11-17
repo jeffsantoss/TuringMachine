@@ -220,6 +220,9 @@ namespace Faculdade___Linguagens_Formais_e_Autômatos
         {
             tape = new Tape(mt);
 
+            if (textBox8.Text == "")
+                return;
+
             if (textBox8.Text.Length > 1)
                 return;
             else

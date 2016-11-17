@@ -113,8 +113,8 @@ namespace Faculdade___Linguagens_Formais_e_Autômatos
                     {
                         if (head < 0)
                         {
-                            processing += "\n \t Seu cabeçote foi direcionada para uma célula inexistente";
-                            return false;
+                            // acrescento símbolos brancos a esqueda do meu primeiro elemento do output.
+                            output = this.ReplaceAt(output, head, turingMachine.Symbolwhite);
                         }
 
                         processing += "Read (" + t.elementRead + ") in state (q" + t.stateOrigin + ") ";
@@ -182,7 +182,7 @@ namespace Faculdade___Linguagens_Formais_e_Autômatos
             List<String> cells = new List<String>();
             String BinaryString = "";
             var binary = "";
-            tape = RemoverCharInvalid(tape, "qδ()->{ }:, ");
+            tape = RemoverCharInvalid(tape, "qδ()->{ }:,\n ");
 
             /*
             adicionamos dentro da lista de string várias strings de binários que representa
@@ -195,19 +195,23 @@ namespace Faculdade___Linguagens_Formais_e_Autômatos
 
                 if (letra == this.Delimiter)
                 {
-                    binary = Conversao.DecimalParaBinario("99");
+                    binary = Conversao.DecimalParaBinario(99.ToString());
+                   // cells.Add("Binário: (" + binary + ")" + "   Letra: (" + letra + ")" + "  Numero: (" + letra + ")" + " | \n");
                 }
 
                 else if (letra == turingMachine.Symbolwhite)
                 {
-                    binary = Conversao.DecimalParaBinario("100");
+                    binary = Conversao.DecimalParaBinario(100.ToString());
+                   // cells.Add("Binário: (" + binary + ")" + "   Letra: (" + letra + ")" + "  Numero: (" + letra + ")" + " | \n");
                 }
                 else
                 {
                     binary = Conversao.DecimalParaBinario(Conversao.CharToNum(letra).ToString());
+                   // cells.Add("Binário: (" + binary + ")" + "   Letra: (" + letra + ")" + "  Numero: (" + Conversao.CharToNum(letra) + ")" + " | \n");
                 }
+
                 cells.Add(binary);
-                //cells.Add("Binário: (" + binary + ")" + "   Letra: (" + letra + ")" + "  Numero: (" + Conversao.CharToNum(letra) + ")" + " | \n");
+               
             }
 
 

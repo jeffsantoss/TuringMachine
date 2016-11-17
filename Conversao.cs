@@ -55,7 +55,7 @@ namespace Faculdade___Linguagens_Formais_e_Autômatos
         public static int CharToNum(char letra)
         {
             // não aceitar a conversão para o mesmo número do delimitador.
-
+            /*
             int result = 16;
 
             var inicio = ' ';
@@ -72,8 +72,34 @@ namespace Faculdade___Linguagens_Formais_e_Autômatos
             }
 
             return result;
-        }
-    }
+            */
+            int result = 0;
 
+            if (Char.IsDigit(letra))
+            {
+                result = int.Parse(letra.ToString());
+                return result;
+            }
+            else
+            {
+                var inicio = 'a';
+                result = 10;
+
+                while (result != letra)
+                { 
+                    inicio++;
+                    result++;
+                }
+
+                // valores do simbolo branco e delimitador.
+                if (result == 99
+                    || result == 100)
+                    result++;
+
+                return result;
+            }
+        }
+
+    }
 }
 
