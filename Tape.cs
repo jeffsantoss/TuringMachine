@@ -13,7 +13,7 @@ namespace Faculdade___Linguagens_Formais_e_Autômatos
         String input = "";
         string output = "";
         public string processing = "";
-            
+
         public Tape(MT turingMachine)
         {
             this.turingMachine = turingMachine;
@@ -43,19 +43,19 @@ namespace Faculdade___Linguagens_Formais_e_Autômatos
             TapeFilled += "{   ";
 
             TapeFilled += " q" + turingMachine.States[turingMachine.States.Length - 1] + "  " + Delimiter;
-            
+
             TapeFilled += " q" + turingMachine.InitialState + "  " + Delimiter;
-            
+
             foreach (char item in turingMachine.FinalState)
                 TapeFilled += " q" + item + "  " + Delimiter;
-      
+
             foreach (char item in turingMachine.Alphabet)
-                TapeFilled +=  " " + item + "  " + Delimiter;
+                TapeFilled += " " + item + "  " + Delimiter;
 
             foreach (char item in turingMachine.AlphabetTape)
-                TapeFilled += " " +  item + "  " + Delimiter;
+                TapeFilled += " " + item + "  " + Delimiter;
 
-                TapeFilled += "\n";
+            TapeFilled += "\n";
 
             foreach (Transition item in turingMachine.Transitions)
                 TapeFilled += item.getTransitionStringDefault() + Delimiter;
@@ -63,7 +63,7 @@ namespace Faculdade___Linguagens_Formais_e_Autômatos
             TapeFilled += " }   \n";
 
             TapeFilled += "{   ";
-             foreach (char item in input)
+            foreach (char item in input)
                 TapeFilled += " " + item + " " + Delimiter;
             TapeFilled += " }   \n";
 
@@ -85,17 +85,17 @@ namespace Faculdade___Linguagens_Formais_e_Autômatos
 
             int stateCurrent = turingMachine.InitialState,
                 equals = 0;
-         
+
             var searhStateInit = turingMachine.Transitions.Where
                                  (si => int.Parse(si.stateOrigin.ToString()) == turingMachine.InitialState);
-    
+
             foreach (Transition t in searhStateInit)
             {
                 if (input[0].Equals(t.elementRead))
                     equals++;
             }
-         
-            if(equals < 1)
+
+            if (equals < 1)
                 throw new TuringExcpetion("Verifique se seu primeiro símbolo lido sai de um estado inicial");
 
 
@@ -105,18 +105,20 @@ namespace Faculdade___Linguagens_Formais_e_Autômatos
             for (int head = 0; head < output.Length;)
             {
 
+                if (head < 0)
+                {
+                    // acrescento símbolos brancos a esqueda do meu primeiro elemento do output.
+                    output = output.Insert(0, turingMachine.Symbolwhite.ToString());
+                    head = 0;
+                }
+
                 foreach (Transition t in turingMachine.Transitions)
                 {
 
                     if (output[head].Equals(t.elementRead)
                         && int.Parse(t.stateOrigin.ToString()).Equals(stateCurrent))
                     {
-                        if (head < 0)
-                        {
-                            // acrescento símbolos brancos a esqueda do meu primeiro elemento do output.
-                            output = this.ReplaceAt(output, head, turingMachine.Symbolwhite);
-                        }
-
+                        
                         processing += "Read (" + t.elementRead + ") in state (q" + t.stateOrigin + ") ";
 
                         stateCurrent = int.Parse(t.stateDestination.ToString());
@@ -162,13 +164,13 @@ namespace Faculdade___Linguagens_Formais_e_Autômatos
                         }
                     }
                 }
-            
+
             }
 
             if (!isStateAccept(stateCurrent))
                 return false;
             else
-                return true;       
+                return true;
         }
 
         /* métodos para conversão em binário */
@@ -196,22 +198,22 @@ namespace Faculdade___Linguagens_Formais_e_Autômatos
                 if (letra == this.Delimiter)
                 {
                     binary = Conversao.DecimalParaBinario(99.ToString());
-                   // cells.Add("Binário: (" + binary + ")" + "   Letra: (" + letra + ")" + "  Numero: (" + letra + ")" + " | \n");
+                    // cells.Add("Binário: (" + binary + ")" + "   Letra: (" + letra + ")" + "  Numero: (" + letra + ")" + " | \n");
                 }
 
                 else if (letra == turingMachine.Symbolwhite)
                 {
                     binary = Conversao.DecimalParaBinario(100.ToString());
-                   // cells.Add("Binário: (" + binary + ")" + "   Letra: (" + letra + ")" + "  Numero: (" + letra + ")" + " | \n");
+                    // cells.Add("Binário: (" + binary + ")" + "   Letra: (" + letra + ")" + "  Numero: (" + letra + ")" + " | \n");
                 }
                 else
                 {
                     binary = Conversao.DecimalParaBinario(Conversao.CharToNum(letra).ToString());
-                   // cells.Add("Binário: (" + binary + ")" + "   Letra: (" + letra + ")" + "  Numero: (" + Conversao.CharToNum(letra) + ")" + " | \n");
+                    // cells.Add("Binário: (" + binary + ")" + "   Letra: (" + letra + ")" + "  Numero: (" + Conversao.CharToNum(letra) + ")" + " | \n");
                 }
 
                 cells.Add(binary);
-               
+
             }
 
 
@@ -250,10 +252,10 @@ namespace Faculdade___Linguagens_Formais_e_Autômatos
         private string RemoverCharInvalid(String oldString, String caracteresInvalid)
         {
 
-         foreach(char letra in caracteresInvalid)
-         {
-           oldString = oldString.Replace(letra.ToString(), "");
-         }
+            foreach (char letra in caracteresInvalid)
+            {
+                oldString = oldString.Replace(letra.ToString(), "");
+            }
 
             return oldString;
         }
@@ -270,7 +272,8 @@ namespace Faculdade___Linguagens_Formais_e_Autômatos
         }
         private bool isStateAccept(int state)
         {
-            if (turingMachine.FinalState.IndexOf(state.ToString()) == -1) {
+            if (turingMachine.FinalState.IndexOf(state.ToString()) == -1)
+            {
                 processing += "\n \t x Você chegou em um estado de rejeição!";
                 return false;
             }
@@ -279,10 +282,10 @@ namespace Faculdade___Linguagens_Formais_e_Autômatos
                 processing += "\n \t x Você chegou em um estado de Aceitação!";
                 return true;
             }
-                
-                
+
+
         }
-       
+
     }
 }
 

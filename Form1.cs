@@ -65,10 +65,10 @@ namespace Faculdade___Linguagens_Formais_e_Autômatos
         /* FITA */
         private void button3_Click(object sender, EventArgs e)
         {
-       
+            
             MessageBox.Show(tape.FillOutTape(), "FITA");
-
-            MessageBox.Show(tape.BinaryTape(), "FITA EM BINÁRIO");
+            
+            MessageBox.Show(tape.BinaryTape() + "\n" + tape.BinaryTape().Length, "FITA EM BINÁRIO");
 
         }
         /* VALIDAÇÃO */
@@ -76,10 +76,10 @@ namespace Faculdade___Linguagens_Formais_e_Autômatos
         {
             try
             {
-                MessageBox.Show(tape.validateInput() == true ? "Válido" : "Inválido" , "Validação");
+                MessageBox.Show(tape.validateInput() == true ? "Válido" : "Inválido", "Validação");
                 MessageBox.Show(tape.processing, "Processamento");
                 MessageBox.Show(tape.FillOutTape(), "FITA COM OUTPUT");
-                }
+            }
             catch (TuringExcpetion f)
             {
             }
@@ -108,11 +108,12 @@ namespace Faculdade___Linguagens_Formais_e_Autômatos
 
             if (textBox2.Text == "")
                 return;
-            try {
+            try
+            {
                 mt.AlphabetTape = textBox2.Text;
                 textBox3.Enabled = true;
             }
-            catch(TuringExcpetion te)
+            catch (TuringExcpetion te)
             {
                 MessageBox.Show("Preencha novamente as tuplas :)");
             }
@@ -122,19 +123,19 @@ namespace Faculdade___Linguagens_Formais_e_Autômatos
 
             // se ele não haver nada, eu saio da função e aguardo um valor.
             if (textBox3.Text == "")
-              return;
+                return;
 
             try
             {
                 mt.States = textBox3.Text;
                 textBox4.Enabled = true;
-                
+
             }
             catch (TuringExcpetion f)
             {
-               // MessageBox.Show("Preencha novamente as tuplas :)");
+                // MessageBox.Show("Preencha novamente as tuplas :)");
                 textBox3.Text = "";
-              //  DesabilitarCampos();
+                //  DesabilitarCampos();
             }
         }
         private void textBox4_TextChanged(object sender, EventArgs e)
@@ -143,7 +144,8 @@ namespace Faculdade___Linguagens_Formais_e_Autômatos
                 return;
 
 
-            try {
+            try
+            {
                 mt.InitialState = int.Parse(textBox4.Text);
                 textBox5.Enabled = true;
             }
@@ -161,7 +163,8 @@ namespace Faculdade___Linguagens_Formais_e_Autômatos
             if (textBox5.Text == "")
                 return;
 
-            try {
+            try
+            {
                 mt.FinalState = textBox5.Text;
                 textBox7.Enabled = true;
             }
@@ -226,7 +229,7 @@ namespace Faculdade___Linguagens_Formais_e_Autômatos
             if (textBox8.Text.Length > 1)
                 return;
             else
-                tape.Delimiter  = Char.Parse(textBox8.Text);
+                tape.Delimiter = Char.Parse(textBox8.Text);
 
         }
     }

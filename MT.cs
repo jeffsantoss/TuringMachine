@@ -39,7 +39,7 @@ namespace Faculdade___Linguagens_Formais_e_Autômatos
         private String states;
         private String Finalstate;
         private int initialState;
-        private char SymbolWhite = '#'; // ?? 
+        private char SymbolWhite = 'B'; // ?? 
         private String alphabetTape;
 
         public string States
@@ -49,16 +49,16 @@ namespace Faculdade___Linguagens_Formais_e_Autômatos
                 states.Replace(",", "");
                 states.Replace(" ", "");
 
-        
+
                 return states;
             }
 
             set
             {
-               
+
                 if (value.Length > 1)
                     throw new TuringExcpetion("Is only supported 9 states");
-                if(!char.IsDigit(value[0]))
+                if (!char.IsDigit(value[0]))
                     throw new TuringExcpetion("Is only supported numbes");
 
                 else
@@ -75,7 +75,7 @@ namespace Faculdade___Linguagens_Formais_e_Autômatos
                     }
                 }
 
-          
+
             }
         }
         public string FinalState
@@ -117,13 +117,13 @@ namespace Faculdade___Linguagens_Formais_e_Autômatos
         {
             get
             {
-               
+
                 return alphabet;
             }
             set
             {
-              value = value.Replace(",", "");
-              value = value.Replace(" ", "");
+                value = value.Replace(",", "");
+                value = value.Replace(" ", "");
                 alphabet = value;
             }
         }
@@ -155,9 +155,9 @@ namespace Faculdade___Linguagens_Formais_e_Autômatos
                     throw new TuringExcpetion("O alfabeto da fita requer os elementos do alfabeto");
                     */
 
-             
-                    alphabetTape = value;
-                    alphabetTape += this.Symbolwhite;
+
+                alphabetTape = value;
+                alphabetTape += this.Symbolwhite;
             }
         }
         public void validateTransition(List<Transition> list)
@@ -166,7 +166,7 @@ namespace Faculdade___Linguagens_Formais_e_Autômatos
             {
                 if (!t.Direction.Equals('L') && !t.Direction.Equals('R') && !t.Direction.Equals('H'))
                 {
-                    throw new TuringExcpetion("Direção da transição " + t.getTransitionStringDefault() + " Incorreta .Erro 01" );
+                    throw new TuringExcpetion("Direção da transição " + t.getTransitionStringDefault() + " Incorreta .Erro 01");
                 }
                 else if (this.alphabet.IndexOf(t.elementRead) == -1
                          && this.alphabetTape.IndexOf(t.elementRead) == -1)
@@ -187,11 +187,11 @@ namespace Faculdade___Linguagens_Formais_e_Autômatos
         }
         public void setFuctionOfTransisiton(String TransitionString)
         {
- 
+
             TransitionString = TransitionString.Replace(" ", "");
             TransitionString = TransitionString.Replace(",", "");
 
-            if(TransitionString.Length < 5)
+            if (TransitionString.Length < 5)
             {
                 throw new TuringExcpetion("É necessário pelo menos uma matriz de transição");
             }
@@ -208,15 +208,15 @@ namespace Faculdade___Linguagens_Formais_e_Autômatos
                     t.Direction = TransitionString[i + 4];
                     Transitions.Add(t);
                 }
-            } 
+            }
             else
                 throw new TuringExcpetion("Cada transição requer tamanho 5");
 
 
 
             validateTransition(this.Transitions);
-            }
-        
+        }
+
     }
 }
 
